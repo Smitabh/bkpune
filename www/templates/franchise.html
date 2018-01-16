@@ -1,0 +1,37 @@
+<ion-view view-title="Gita Pathshala Details" ng-init="Init()">
+  <ion-content padding="true" class="">
+<div class="list card">
+
+  <div class="item item-avatar">
+    <img src="{{center.center_photos[0].path?center.center_photos[0].path:'img/icon152.png'}}">
+    <h2>{{center.name}}</h2>
+    <p>{{center.pin}}</p>
+  </div>
+
+  <div class="item item-body">
+    <img class="full-image" src="{{center.center_photos[0].path?center.center_photos[0].path:'img/icon152.png'}}">
+    <p>
+      Address: {{center.address}}
+    </p>
+    <p>
+      Pin :{{center.pin}}
+    </p>
+    <p>
+      Phone 1: {{center.phone1}},Phone 2: {{center.phone2}}
+    </p>
+    <p>
+      BK Contact: {{center.bk_contact}}
+    </p>
+    <p>
+      Connection: {{center.connection}}
+    </p>
+    <p>
+      <a href="#" class="subdued">1 Like</a>
+      <a href="#" class="subdued">5 Comments</a>
+    </p>
+  </div>
+
+</div>
+
+  </ion-content>
+</ion-view>

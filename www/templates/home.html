@@ -1,0 +1,50 @@
+<ion-view view-title="Home" hide-nav-bar="false" ng-init="Init()">
+  <ion-content fb-image="img/bg.jpg" padding="true" class="incenter">
+<br><br>
+<div class="row">
+
+  <div class="col" center>
+	<div class="card">
+	  <div class="item item-text-wrap">
+	    Welcome to BKPune v<span class="version"></span>
+	  </div>
+	</div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col" center>
+	<div class="card">
+	  <div class="item item-text-wrap">
+	    Centers<br>
+	    {{frcount}}
+	  </div>
+	</div>
+  </div>
+  <div class="col" center>
+	<div class="card">
+	  <div class="item item-text-wrap">
+	    Franchise<br>
+	    {{ctcount}}
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col" center>
+
+
+	    <button class="button button-calm button-full " ng-click="startApp()"><i class="icon ion-search"></i> Center Search</button>
+
+<button class="button button-positive button-full " ng-click="searchFR()"><i class="icon ion-search"></i> Franchise Search</button>
+
+  </div>
+
+</div>
+
+  </ion-content>
+</ion-view>

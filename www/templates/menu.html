@@ -1,0 +1,37 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-bkpune">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-calm ion-navicon" menu-toggle="left"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left"  class="my-container">
+    <ion-header-bar class="bar-profile bar-clear" >
+
+    <div class="profile">
+       <img class="profile-picture" src="img/96.png" />
+        <h3 class="name">BKPune</h3>
+    </div>
+
+    </ion-header-bar>
+    <ion-content >
+      <ion-list>
+        <ion-item menu-close href="#/app/home" class="item transp">
+          Home
+        </ion-item> 
+        <ion-item menu-close href="#/app/search" class="item transp">
+          Center Search
+        </ion-item>
+        <ion-item menu-close href="#/app/frsearch" class="item transp">
+          Franchise Search
+        </ion-item>       
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

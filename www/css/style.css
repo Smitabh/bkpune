@@ -1,0 +1,138 @@
+/* Empty. Add your own CSS if you like */
+
+.back-button {
+  color: #FFF !important;
+}
+
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  padding-top: 80px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+
+#logo {
+  margin: 30px 0px;
+}
+
+#list {
+  width: 170px;
+  margin: 30px auto;
+  font-size: 20px;
+}
+#list ol {
+  margin-top: 30px;
+}
+#list ol li {
+  text-align: left;
+  list-style: decimal;
+  margin: 10px 0px;
+}
+
+.incenter {
+  text-align: center;
+}
+
+/* Side Menu Profile */
+.my-container {
+    background-image:  url("../img/menu-bg.jpg");
+    background-color: #26a69a;
+    background-repeat: repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+}
+
+.bar.bar-profile {
+background-image:  url("../img/menu-bg.jpg");
+    height: 170px;
+}
+
+.bar .profile {
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    padding-top: 15px;
+}
+
+.bar.bar-calm {
+  background-color: #009688;
+}
+.bar.bar-bkpune {
+  background-color: #f97b88 ;
+}
+.tab-bkpune {
+  background-color: #f97b88 !important;
+}
+.tabs-icon-top,
+.tabs-icon-top .tab,
+.tabs-icon-top .tab .nav-view-home {
+    color: #f97b88;
+}
+.item.transp {
+    background-color: transparent;
+    color: #fff;
+}
+.transp .item-content {
+    background-color: transparent !important;
+    color: #fff;
+}
+.app-logo{ max-width:100px; margin:auto; background-repeat:no-repeat;background-position:center;}
+.top-content { padding-top: 10vh;  text-align: center;   }
+.loginButton{ padding-bottom:2px;}
+.remvoeBP{ padding-bottom:120px;}
+.removePM{ margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; }
+.hdrt {
+    background-color: transparent !important;
+    color: #fff;
+}
+.custom-dark{
+    background-color : #ff7465 !important;
+}
+.custom-tab{
+    background-color : #d24f6e !important;
+}
+  .foot {
+    position : absolute;
+    bottom : 410px;
+    height : 50px;
+    margin-top : 10px;
+  }
+  .foot1 {
+    position : absolute;
+    bottom : 160px;
+    height : 40px;
+    margin-top : 40px;
+  }
+
+
+
+.profile .name {
+    color: #FFF;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.profile-picture {
+    border-radius: 50%;
+}
+
+.menu .has-header
+{
+    top: 169px;
+}
+/* Side Menu Profile end */
