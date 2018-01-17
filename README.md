@@ -11,9 +11,7 @@ after this download and copy this repo to project folder.
 
 Or 
 
-just clone this repo to local folder and run
-
-with command:
+just clone this repo to local folder and run command:
 
 `git clone https://github.com/IOCare/bkpune.git`
 
