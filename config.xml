@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="in.iocare.bkpuneapp" version="0.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="in.iocare.bkpuneapp" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>BKPuneApp</name>
     <description>BK Pune App</description>
     <author email="research@iocare.in" href="https://www.iocare.in">ioCare</author>
@@ -84,5 +84,9 @@
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
     <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.2.5" />
     <engine name="android" spec="7.0.0" />
+    <engine name="ios" spec="4.5.4" />
+    <engine name="windows" spec="5.0.0" />
 </widget>

@@ -1,16 +1,26 @@
 <ion-view view-title="Center Details" ng-init="Init()">
-  <ion-content padding="true" class="">
+  <ion-content padding="false" delegate-handle="example-scroller" elastic-header="example-elastic-header" overflow-scroll="false">
+    <div id="example-elastic-header" class="incenter" bg-image="{{center.center_photos[0].path?center.center_photos[0].path:'img/menu-bg.jpg'}}">
+      <br><br>
+      <div class="card trcard ">
+        <div class="item item-text-wrap ">
+          <h2 class="calm"><b>{{center.center_name}}</b></h2>
+        </div>
+      </div>
+      
+    </div>
+
 <div class="list card">
 
-  <div class="item item-thumbnail-left item-button-right">
+  <div class="item item-avatar-left item-button-right">
     <img src="{{center.center_photos[0].path?center.center_photos[0].path:'img/icon152.png'}}">
     <h2>{{center.center_name}}</h2>
     <p>{{center.pin}}</p>
-    <button class="button button-calm" ng-click="Share('Center Name: '+center.center_name+' \nAddress: '+center.center_address+' \n\n--Shared through BKPuneApp')"> <i class="icon ion-android-share-alt"></i></button>
+    <button class="button button-calm" ng-click="Share('Center Name: '+center.center_name+' \nAddress: '+center.center_address+'\nPin: '+center.pin+' \n\n--Shared through BKPuneApp')"> <i class="icon ion-android-share-alt"></i></button>
   </div>
 
   <div class="item item-body">
-    <img class="full-image" src="{{center.center_photos[0].path?center.center_photos[0].path:'img/icon152.png'}}">
+    <!-- <img class="full-image" src="{{center.center_photos[0].path?center.center_photos[0].path:'img/icon152.png'}}"> -->
     <p >
       Address: {{center.center_address}}
     </p>
@@ -27,11 +37,41 @@
       Area: {{center.area}}
     </p>
     <p>
+      Nearest Center: {{center.nearest_center}}
+    </p>    
+    <p>
       <a href="#" class="subdued">1 Like</a>
       <a href="#" class="subdued">5 Comments</a>
     </p>
   </div>
 
+<ion-card class="transparent-card">
+  <div map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyD1noaQ8oMSvvBicnNrpNSMtaQs99C7L-M">
+    <ng-map center="{{center.latitude}},{{center.longitude}}" zoom="17">
+
+        <directions
+          draggable="true"
+          panel="directions-panel"
+          travel-mode="DRIVING"
+          origin="{{position.lat}},{{position.lon}}"
+          destination="{{center.latitude}},{{center.longitude}}">
+        </directions>
+        <custom-marker id="end"
+          position="{{center.latitude}},{{center.longitude}}">
+          <div class="my1"> {{center.center_name}} Center<br> {{center.pin}}<br>Phone: {{center.phone1}}</div>
+        </custom-marker>
+        <custom-marker id="start"
+
+          position="{{position.lat}},{{position.lon}}">
+          <div class="my1"> Your Location </div>
+
+        </custom-marker>
+
+
+    </ng-map>
+    <p style="padding:10px;"><br><b>Total Distance to {{center.center_name}} Center is {{map.directionsRenderers[0].directions.routes[0].legs[0].distance.value / 1000}} km from your current location</b></p>
+  </div>
+</ion-card>
 </div>
 
   </ion-content>

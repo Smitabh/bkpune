@@ -1,10 +1,12 @@
 <ion-view view-title="Home" hide-nav-bar="false" ng-init="Init()">
-  <ion-content fb-image="img/bg.jpg" padding="true" class="incenter">
-<br><br>
+  <ion-content  padding="false" class="incenter" delegate-handle="example-scroller" elastic-header="example-elastic-header" overflow-scroll="false">
+    <div id="example-elastic-header" class="" bg-image="img/menu-bg.jpg"></div>
+
+<!-- fb-image="img/bg.jpg" -->
 <div class="row">
 
   <div class="col" center>
-	<div class="card">
+	<div class="card1">
 	  <div class="item item-text-wrap">
 	    Welcome to BKPune v<span class="version"></span>
 	  </div>
@@ -17,16 +19,20 @@
 
   <div class="col" center>
 	<div class="card">
+	  <div class="item item-divider bkpune-darkbg light">
+	    Centers
+	  </div>		
 	  <div class="item item-text-wrap">
-	    Centers<br>
 	    {{frcount}}
 	  </div>
 	</div>
   </div>
   <div class="col" center>
 	<div class="card">
+	  <div class="item item-divider bkpune-darkbg light">
+	    Franchise
+	  </div>		
 	  <div class="item item-text-wrap">
-	    Franchise<br>
 	    {{ctcount}}
 	  </div>
 	</div>

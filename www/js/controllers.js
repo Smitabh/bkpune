@@ -48,6 +48,7 @@ angular.module('bkpuneapp.controllers', [])
   $scope.Init = function() {
 
       ionic.Platform.ready(function(){
+        $scope.headerImage = 'img/menu-bg.jpg';
           try{
             cordova.getAppVersion.getVersionNumber().then(function (version) {
                 $('.version').text(version);
@@ -84,9 +85,12 @@ angular.module('bkpuneapp.controllers', [])
 
 })
 
-.controller('CenterCtrl', function($scope, $stateParams, $state,CenterSearchService) {
+.controller('CenterCtrl', function($scope, $stateParams, $state,CenterSearchService,NgMap,$rootScope) {
   // Called to navigate to the main app
     $scope.center={};
+    $scope.headerImage='';
+    $scope.position={lat:null,lon:null};
+    $scope.length='';
     $scope.Share = function(msg) {
       var options = {
         message: msg, // not supported on some apps (Facebook, Instagram)
@@ -110,9 +114,31 @@ angular.module('bkpuneapp.controllers', [])
 
     $scope.Init = function() {
       var id = $stateParams.id;
+      $scope.position = {lat:lat,lon:lon};
+
       CenterSearchService.getCenterDetails("ct",id).success(function(data) {
           console.log(data);
           $scope.center=data;
+          try{
+            $scope.headerImage = data.center_photos[0].path;
+          }catch(e){
+            $scope.headerImage = 'img/menu-bg.jpg';
+          } 
+                   
+          console.log($scope.position);
+
+        NgMap.getMap().then(function(map) {
+          $rootScope.map = map;
+          var total;
+          //console.log(map.directionsRenderers[0].directions);
+          //var myroute = map.directionsRenderers[0].directions.routes[0];
+          //for (var i = 0; i < myroute.legs.length; i++) {
+          //  total += myroute.legs[i].distance.value;
+          //}
+          //total = map.directionsRenderers[0].directions.routes[0].legs[0].distance.value / 1000;
+          //$scope.length = total;
+        });
+
         }).error(function(data) {
           var alertPopup = $ionicPopup.alert({
           title: 'Fetch Failed',
@@ -143,15 +169,9 @@ angular.module('bkpuneapp.controllers', [])
 
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('AboutCtrl', function($scope) {
+
+
 })
 
 .controller('SearchCtrl', function($scope, $stateParams,CenterSearchService,$ionicPopup) {

@@ -75,6 +75,9 @@ background-image:  url("../img/menu-bg.jpg");
 .bar.bar-bkpune {
   background-color: #f97b88 ;
 }
+.bkpune-darkbg {
+  background-color: #444 ;
+}
 .tab-bkpune {
   background-color: #f97b88 !important;
 }
@@ -136,3 +139,77 @@ background-image:  url("../img/menu-bg.jpg");
     top: 169px;
 }
 /* Side Menu Profile end */
+
+.background-image {
+  /* In this example we are using a background-image. But the header element could be anything. 
+  background-image: url(https://ununsplash.imgix.net/photo-1421091242698-34f6ad7fc088?fit=crop&fm=jpg&h=650&q=75&w=950);*/
+  background-size: cover;
+  background-position: center;
+  /* The header must have a height: */
+  height: 50vw;
+}
+.transparent-card{
+    background-color: transparent;
+}
+
+      .custom-marker {
+      }
+      .custom-marker.my1 {
+        font-size: 1.5em;
+        padding: 10px;
+        background: #fff;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        border: #7F7F7F solid 1px;
+      }
+
+      .custom-marker.my1:after {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 7px 6px 0;
+        border-color: #fff transparent;
+        display: block;
+        width: 0;
+        z-index: 1;
+        margin-left: -6px;
+        bottom: -6px;
+        left: 50%;
+      }
+
+      .custom-marker.my1:before {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 7px 6px 0;
+        border-color: #7F7F7F transparent;
+        display: block;
+        width: 0;
+        z-index: 0;
+        margin-left: -6px;
+        bottom: -7px;
+        left: 50%;
+      }
+
+.trcard {
+
+    opacity: 0.7;
+  width: 100px;
+  height: 100px; 
+    margin:auto;
+    border-radius: 50%;
+    justify-content: center;
+  display: flex!important;
+  align-items: center!important;
+}
+
+.trcardt {
+    opacity: 1;
+}
+.circle {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px; 
+  /* width and height can be anything, as long as they're equal */
+}

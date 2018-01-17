@@ -4,8 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-
-angular.module('bkpuneapp', ['ionic', 'bkpuneapp.controllers','bkpuneapp.services','bkpuneapp.directives'])
+var lat;
+var lon;
+angular.module('bkpuneapp', ['ionic', 'bkpuneapp.controllers','bkpuneapp.services','bkpuneapp.directives','ngMap'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -16,11 +17,47 @@ angular.module('bkpuneapp', ['ionic', 'bkpuneapp.controllers','bkpuneapp.service
     {
       if (cordova.platformId == 'android') {
           StatusBar.backgroundColorByHexString("#f97b88");
-      }     
+      }
+
+    var onLocationSuccess = function(position) {
+        console.log('Latitude: '          + position.coords.latitude          + '\n' +
+              'Longitude: '         + position.coords.longitude         + '\n' +
+              'Altitude: '          + position.coords.altitude          + '\n' +
+              'Accuracy: '          + position.coords.accuracy          + '\n' +
+              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+              'Heading: '           + position.coords.heading           + '\n' +
+              'Speed: '             + position.coords.speed             + '\n' +
+              'Timestamp: '         + position.timestamp                + '\n');
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+    };
+    function onLocationError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+      navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError);   
     }catch(e){
       console.log(e);
     }
 
+
+
+
+    try
+    {
+
+    var notificationOpenedCallback = function(jsonData) {
+      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+    }
+
+      window.plugins.OneSignal
+        .startInit("f804aff1-ff72-421f-b55f-32b93662e8d7")
+        .handleNotificationOpened(notificationOpenedCallback)
+        .endInit();
+        
+    }catch(e){
+      console.log(e);
+    }
 
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -103,6 +140,16 @@ angular.module('bkpuneapp', ['ionic', 'bkpuneapp.controllers','bkpuneapp.service
         'menuContent': {
           templateUrl: 'templates/franchise.html',
         controller: 'FranchiseCtrl'
+        }
+      }
+    })
+  .state('app.about', {
+      url: '/about',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/about.html',
+        controller: 'AboutCtrl'
         }
       }
     })
