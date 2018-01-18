@@ -1,4 +1,4 @@
-# bkpune
+# BKPuneApp
 Bk Pune Android iOS App
 
 Runfollowing command to setup project.
@@ -18,4 +18,3 @@ just clone this repo to local folder and run command:
 and then run
 
 `npm i`
-
