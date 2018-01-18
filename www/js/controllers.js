@@ -2,13 +2,6 @@ angular.module('bkpuneapp.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -42,11 +35,12 @@ angular.module('bkpuneapp.controllers', [])
 })
 
 .controller('HomeCtrl', function($scope, $stateParams, $state,CenterSearchService) {
-  // Called to navigate to the main app
+  // Called to navigate to the home page
   $scope.frcount="";
   $scope.ctcount="";
   $scope.permit=false;
 
+  //Enable Location
   $scope.EnableLocation = function() {
       try{
         var permissions = cordova.plugins.permissions;
@@ -74,7 +68,8 @@ angular.module('bkpuneapp.controllers', [])
 
 
 
-
+  //Init - Check Permissions, Assign header image, get app version, get Centers count.
+  //too much of jobs.. can be reduced by moving into other pages. or making LazyCalls
   $scope.Init = function() {
     
       ionic.Platform.ready(function(){
@@ -85,7 +80,7 @@ angular.module('bkpuneapp.controllers', [])
             permissions.checkPermission(permissions.ACCESS_FINE_LOCATION, function( status ){
               if ( status.hasPermission ) {
                 console.log("Yes :D ");
-                $scope.permit=true;
+                $scope.permit=true;//for status button on home screen
               }
               else {
                 console.warn("No :( ");
@@ -106,7 +101,7 @@ angular.module('bkpuneapp.controllers', [])
       });
 
 
-
+      //Get center count
       CenterSearchService.getCount().success(function(data) {
           console.log(data);
           var ct = data.split(",");
@@ -133,17 +128,19 @@ angular.module('bkpuneapp.controllers', [])
 })
 
 .controller('CenterCtrl', function($scope,$ionicLoading, $stateParams, $state,CenterSearchService,NgMap,$rootScope) {
-  // Called to navigate to the main app
+  // Called to navigate to Center Details
     $scope.center={};
     $scope.headerImage='';
-    $scope.position={lat:null,lon:null};
+    $scope.position={lat:null,lon:null}; //Very trouble some
     $scope.length='';
     $scope.status='';
+
+    //Social Sharing - working fine on all hardware
     $scope.Share = function(msg) {
       var options = {
         message: msg, // not supported on some apps (Facebook, Instagram)
-        subject: 'Share Address', // fi. for email
-        chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+        subject: 'Share Address', 
+        chooserTitle: 'Pick an app' 
       }
 
       var onSuccess = function(result) {
