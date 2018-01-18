@@ -19,22 +19,22 @@ angular.module('bkpuneapp', ['ionic', 'bkpuneapp.controllers','bkpuneapp.service
           StatusBar.backgroundColorByHexString("#f97b88");
       }
 
-    var onLocationSuccess = function(position) {
-        console.log('Latitude: '          + position.coords.latitude          + '\n' +
-              'Longitude: '         + position.coords.longitude         + '\n' +
-              'Altitude: '          + position.coords.altitude          + '\n' +
-              'Accuracy: '          + position.coords.accuracy          + '\n' +
-              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-              'Heading: '           + position.coords.heading           + '\n' +
-              'Speed: '             + position.coords.speed             + '\n' +
-              'Timestamp: '         + position.timestamp                + '\n');
-        lat = position.coords.latitude;
-        lon = position.coords.longitude;
-    };
-    function onLocationError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
+      var onLocationSuccess = function(position) {
+          console.log('Latitude: '          + position.coords.latitude          + '\n' +
+                'Longitude: '         + position.coords.longitude         + '\n' +
+                'Altitude: '          + position.coords.altitude          + '\n' +
+                'Accuracy: '          + position.coords.accuracy          + '\n' +
+                'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+                'Heading: '           + position.coords.heading           + '\n' +
+                'Speed: '             + position.coords.speed             + '\n' +
+                'Timestamp: '         + position.timestamp                + '\n');
+          lat = position.coords.latitude;
+          lon = position.coords.longitude;
+      };
+      function onLocationError(error) {
+          alert('code: '    + error.code    + '\n' +
+                'message: ' + error.message + '\n');
+      }
       navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError);   
     }catch(e){
       console.log(e);
@@ -46,9 +46,9 @@ angular.module('bkpuneapp', ['ionic', 'bkpuneapp.controllers','bkpuneapp.service
     try
     {
 
-    var notificationOpenedCallback = function(jsonData) {
-      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-    }
+      var notificationOpenedCallback = function(jsonData) {
+        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+      }
 
       window.plugins.OneSignal
         .startInit("f804aff1-ff72-421f-b55f-32b93662e8d7")

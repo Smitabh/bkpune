@@ -16,7 +16,7 @@
     <img src="{{center.center_photos[0].path?center.center_photos[0].path:'img/icon152.png'}}">
     <h2>{{center.center_name}}</h2>
     <p>{{center.pin}}</p>
-    <button class="button button-calm" ng-click="Share('Center Name: '+center.center_name+' \nAddress: '+center.center_address+'\nPin: '+center.pin+' \n\n--Shared through BKPuneApp')"> <i class="icon ion-android-share-alt"></i></button>
+    <button class="button button-calm" ng-click="Share('Center Name: '+center.center_name+' \nAddress: '+center.center_address+'\nEmail:'+center.email+'\nPin: '+center.pin+' \n\n--Shared through BKPuneApp')"> <i class="icon ion-android-share-alt"></i></button>
   </div>
 
   <div class="item item-body">
@@ -43,10 +43,15 @@
       <a href="#" class="subdued">1 Like</a>
       <a href="#" class="subdued">5 Comments</a>
     </p>
+    <p>
+      <span class="calm" ng-bind-html="status"></span>
+    </p>    
   </div>
 
+<!-- https://ngmap.github.io/#/!directions.html -->
+
 <ion-card class="transparent-card">
-  <div map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyD1noaQ8oMSvvBicnNrpNSMtaQs99C7L-M">
+  <div map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyD1noaQ8oMSvvBicnNrpNSMtaQs99C7L-M&libraries=places">
     <ng-map center="{{center.latitude}},{{center.longitude}}" zoom="17">
 
         <directions
@@ -70,6 +75,10 @@
 
     </ng-map>
     <p style="padding:10px;"><br><b>Total Distance to {{center.center_name}} Center is {{map.directionsRenderers[0].directions.routes[0].legs[0].distance.value / 1000}} km from your current location</b></p>
+
+    <br>
+      <textarea row="10" cols="20">{{map.directionsRenderers[0].directions}}{{position}}</textarea>
+
   </div>
 </ion-card>
 </div>

@@ -46,11 +46,12 @@
 
 	    <button class="button button-calm button-full " ng-click="startApp()"><i class="icon ion-search"></i> Center Search</button>
 
-<button class="button button-positive button-full " ng-click="searchFR()"><i class="icon ion-search"></i> Franchise Search</button>
+		<button class="button button-positive button-full " ng-click="searchFR()"><i class="icon ion-search"></i> Franchise Search</button>
 
   </div>
 
 </div>
-
+<button disabled ng-if="permit" ng-click="EnableLocation()" class="button button-{{permit?'balanced':'assertive'}}"><i class="icon ion-location"></i> Location Enabled</button>
+<button ng-if="!permit" ng-click="EnableLocation()" class="button button-{{permit?'balanced':'assertive'}}"><i class="icon ion-location"></i> Allow Location</button>
   </ion-content>
 </ion-view>

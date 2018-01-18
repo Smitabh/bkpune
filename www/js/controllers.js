@@ -45,10 +45,57 @@ angular.module('bkpuneapp.controllers', [])
   // Called to navigate to the main app
   $scope.frcount="";
   $scope.ctcount="";
-  $scope.Init = function() {
+  $scope.permit=false;
 
+  $scope.EnableLocation = function() {
+      try{
+        var permissions = cordova.plugins.permissions;
+        permissions.requestPermission(permissions.ACCESS_FINE_LOCATION, success, error);
+         console.log('in Permission');
+        function error() {
+          console.log('ACCESS_FINE_LOCATION permission is not turned on');
+        }
+         
+        function success( status ) {
+          if( !status.hasPermission )
+          {
+            error();
+          } else{
+            $scope.permit=true;
+            console.log('has Permission');
+            $scope.$apply();
+          }
+        }
+    }catch(e){
+      alert(e);
+    }  
+  }
+
+
+
+
+
+  $scope.Init = function() {
+    
       ionic.Platform.ready(function(){
         $scope.headerImage = 'img/menu-bg.jpg';
+
+        try{
+          var permissions = cordova.plugins.permissions;
+            permissions.checkPermission(permissions.ACCESS_FINE_LOCATION, function( status ){
+              if ( status.hasPermission ) {
+                console.log("Yes :D ");
+                $scope.permit=true;
+              }
+              else {
+                console.warn("No :( ");
+                $scope.permit=false
+              }
+            });
+          }catch(e){
+            alert(e);
+          }
+
           try{
             cordova.getAppVersion.getVersionNumber().then(function (version) {
                 $('.version').text(version);
@@ -75,7 +122,7 @@ angular.module('bkpuneapp.controllers', [])
 
   }
   $scope.startApp = function() {
-    $state.go('app.search');
+    $state.go('app.searchk');
     console.log('Starting!');
   };
   $scope.searchFR = function() {
@@ -85,12 +132,13 @@ angular.module('bkpuneapp.controllers', [])
 
 })
 
-.controller('CenterCtrl', function($scope, $stateParams, $state,CenterSearchService,NgMap,$rootScope) {
+.controller('CenterCtrl', function($scope,$ionicLoading, $stateParams, $state,CenterSearchService,NgMap,$rootScope) {
   // Called to navigate to the main app
     $scope.center={};
     $scope.headerImage='';
     $scope.position={lat:null,lon:null};
     $scope.length='';
+    $scope.status='';
     $scope.Share = function(msg) {
       var options = {
         message: msg, // not supported on some apps (Facebook, Instagram)
@@ -113,11 +161,46 @@ angular.module('bkpuneapp.controllers', [])
 
 
     $scope.Init = function() {
+    $ionicLoading.show({
+      template: '<ion-spinner></ion-spinner><br>Getting Center Details..'
+    });
+    $scope.status='Getting location...<ion-spinner></ion-spinner>';
+      try
+      {
+        var onLocationSuccess = function(position) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            $scope.position = {lat:position.coords.latitude,lon:position.coords.longitude};
+          NgMap.getMap().then(function(map) {
+            $rootScope.map = map;
+            var total;
+            console.log(map.directionsRenderers[0].directions);
+            //var myroute = map.directionsRenderers[0].directions.routes[0];
+            //for (var i = 0; i < myroute.legs.length; i++) {
+            //  total += myroute.legs[i].distance.value;
+            //}
+            //total = map.directionsRenderers[0].directions.routes[0].legs[0].distance.value / 1000;
+            //$scope.length = total;
+          });
+          $scope.status='Location locked: '+position.coords.latitude+','+position.coords.longitude;
+        };
+        function onLocationError(error) {
+            alert('code: '    + error.code    + '\n' +
+                  'message: ' + error.message + '\n');
+        }
+        navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError);   
+      }catch(e){
+        console.log(e);
+      }
+
+
+
       var id = $stateParams.id;
-      $scope.position = {lat:lat,lon:lon};
+      
 
       CenterSearchService.getCenterDetails("ct",id).success(function(data) {
           console.log(data);
+          $ionicLoading.hide();
           $scope.center=data;
           try{
             $scope.headerImage = data.center_photos[0].path;
@@ -127,19 +210,8 @@ angular.module('bkpuneapp.controllers', [])
                    
           console.log($scope.position);
 
-        NgMap.getMap().then(function(map) {
-          $rootScope.map = map;
-          var total;
-          //console.log(map.directionsRenderers[0].directions);
-          //var myroute = map.directionsRenderers[0].directions.routes[0];
-          //for (var i = 0; i < myroute.legs.length; i++) {
-          //  total += myroute.legs[i].distance.value;
-          //}
-          //total = map.directionsRenderers[0].directions.routes[0].legs[0].distance.value / 1000;
-          //$scope.length = total;
-        });
-
         }).error(function(data) {
+          $ionicLoading.hide();
           var alertPopup = $ionicPopup.alert({
           title: 'Fetch Failed',
           template: 'Please check your your internet connection!'
@@ -174,7 +246,7 @@ angular.module('bkpuneapp.controllers', [])
 
 })
 
-.controller('SearchCtrl', function($scope, $stateParams,CenterSearchService,$ionicPopup) {
+.controller('SearchCtrl', function($scope, $stateParams,CenterSearchService,$ionicPopup,$ionicLoading) {
   $scope.data = {city:'pune',area:''}
   $scope.input = {};  
   $scope.cities =[];
@@ -194,12 +266,16 @@ angular.module('bkpuneapp.controllers', [])
   }
 
   $scope.runinitk = function(){
-
+    $ionicLoading.show({
+      template: '<ion-spinner></ion-spinner><br>Getting the list of Centers'
+    });
     CenterSearchService.getCenters("ct","","").success(function(data) {
         console.log(data);
         //$scope.centers=data;
         $scope.centersk = data
+        $ionicLoading.hide();
       }).error(function(data) {
+        $ionicLoading.hide();
         var alertPopup = $ionicPopup.alert({
         title: 'Fetch Failed',
         template: 'Please check your your internet connection!'
