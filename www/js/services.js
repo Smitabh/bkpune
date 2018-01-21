@@ -195,5 +195,47 @@ angular.module('bkpuneapp.services', [])
 
 
   };
-});
+}),
+service('CenterContactService', function ($q, $http) {
+    return {
+      postContactCenter: function (data) {
+      var deferred = $q.defer(),
+                promise = deferred.promise;
+                console.log(data);
+        //Ajax Starts
+        $.ajax({
+            url: "https://bkpuneapp.iocare.in/api/1/contact",
+            type: 'POST',
+            data: data,
+            beforeSend: function(xhr) { 
+              //xhr.setRequestHeader("X-OCTOBER-REQUEST-HANDLER", "onCheckLogin");
+              xhr = {};
+              //xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+            }
+          })
+        .done(function(response) { 
+          console.log(response);
+          deferred.resolve(response);
+        })
+        .fail(function(response) {
+          console.log("in error ");
+          console.log(response);
+          deferred.reject(response);
+        });
+      //ajax Ends
+ 
+            promise.success = function (fn) {
+                promise.then(fn);
+                return promise;
+            };
+            promise.error = function (fn) {
+                promise.then(null, fn);
+                return promise;
+            };
+            return promise;
+
+      }
+	}
+	
+});	 
 
