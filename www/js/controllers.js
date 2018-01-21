@@ -462,3 +462,21 @@ if(window.localStorage['didTutorial'] === "true") {
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
+
+.controller('ContactCtrl', function($scope,CenterContactService) {
+	
+	$scope.data = {personName:null,email:null,subject:null,msessage:null};
+		$scope.saveContact = function(data){
+				//alert('personName--'+data.personName);
+				CenterContactService.postContactCenter(data).success(function(data) {
+				console.log(data);
+			
+			  }).error(function(data) {
+				var alertPopup = $ionicPopup.alert({
+					title: 'Fetch Failed',
+					template: 'Please check your your internet connection!'
+			  });
+			});
+		}
+})
+
