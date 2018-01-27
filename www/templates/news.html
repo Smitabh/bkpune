@@ -1,40 +1,57 @@
-<ion-view view-title="Center Details" ng-init="Init()">
+<ion-view view-title="News Details" ng-init="Init()">
   <ion-content padding="false" delegate-handle="example-scroller" elastic-header="example-elastic-header" overflow-scroll="false">
     <div id="example-elastic-header" class="incenter" bg-image="{{headerImage}}">
       <br><br>
       <div class="card trcard ">
         <div class="item item-text-wrap ">
-          <h2 class="calm"><b>New & Events</b></h2>
+          <h2 class="calm"><b>News</b></h2>
         </div>
-      </div>
-      
+      </div>   
     </div>
-
-<div class="list card" ng-repeat="news in newsItems">
-
-  <div class="item item-thumbnail-left" ng-click="showDiv{{news.id}} = !showDiv{{news.id}}" ng-click="$('.target{{news.id}}').toggle();">
-    <img src="{{center.center_photos[0].path?center.center_photos[0].path:'img/newsicon.png'}}">
-    <h2>{{news.title}}</h2>
-    <p>Created: {{news.created_at}}</p>
-    <p>Published: {{news.published_at}}</p>
-  </div>
-
-  <div class="item item-body animated flipInX" ng-show="showDiv{{news.id}}">
-    <img class="full-image" src="https://bkpuneapp.iocare.in/storage/app/media/{{news.image}}">
-    <p ng-bind-html="news.content">
-    </p>
-    <p>
-      <a href="#" class="subdued">1 Like</a>
-      <a href="#" class="subdued">5 Comments</a>
-    </p>
-  </div>
-
-</div>
-
-
-
-
-
-
+	<!--div class="list card" ng-repeat="news in newsItems">
+	  <div class="item item-thumbnail-left" ng-click="showDiv{{news.id}} = !showDiv{{news.id}}" ng-click="$('.target{{news.id}}').toggle();">
+		<img src="{{center.center_photos[0].path?center.center_photos[0].path:'img/newsicon.png'}}">
+		<h2 style="font-size:16px;color: #ff3607;font-weight: 500;">{{news.title}}</h2>
+		<p ng-bind-html="news.introductory"></p>
+		<p ng-bind-html="news.slug"></p>
+	  </div>
+	  <div class="item item-body animated flipInX" ng-show="showDiv{{news.id}}"> 
+		<img class="full-image" src="https://bkpuneapp.iocare.in/storage/app/media/{{news.image}}">
+		<p ng-bind-html="news.content">
+		</p>
+		<p>
+		  <a href="#" class="subdued">1 Like</a>
+		  <a href="#" class="subdued">5 Comments</a>
+		</p>
+	  </div>
+	</div-->
+	<div class="list card">
+		<div class="item item-thumbnail-left" ng-click="showNewDiv(1)">
+			<img src="img/newsicon.png">
+			<h2 style="font-size:16px;color: #ff3607;font-weight: 500;">Visit Jagdamba Bhawan </h2>
+			<p style="text-align:justify;">Dadi Janki ji visit to inspect <br>
+			   construction at Jagdamba Bhawan<br>
+				dated on 30 Nov 2017
+			</p>
+		</div>
+		<div class="item item-body animated flipInX" ng-show="showData1">
+			<img class="full-image" src="img/n1.jpg">
+		</div> 
+	</div>	
+	<div class="list card">
+		<div class="item item-thumbnail-left"  ng-click="showNewDiv(2)">
+			<img src="img/newsicon.png">
+			<h2 style="font-size:16px;color: #ff3607;font-weight: 500;">Best wishes for Jagdamba Bhawan </h2>
+			<p style="text-align:justify; ">
+			  Senior Rajyogi teacher from <br>
+			  Brahma Kunaris HQ, Mt. Abu, <br>
+			  Rajasthan brother BK Surya  bhai<br>
+			  visited Jagdamba Bhawan in Oct 2017 
+			</p>
+		</div>
+		<div class="item item-body animated flipInX" ng-show="showData2">
+			<img class="full-image" src="img/n1.jpg">
+		</div>		
+	</div>
   </ion-content>
 </ion-view>
