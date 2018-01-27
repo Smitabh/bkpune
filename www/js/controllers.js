@@ -520,7 +520,10 @@ if(window.localStorage['didIntro'] === "true") {
 
 })
 .controller('NewsCtrl', function($scope,CenterSearchService,$ionicPopup,$ionicLoading) {
-
+ $scope.showNewDiv = function(id){
+	  var rawData = 'showData'+id;
+			   $scope[rawData] =   $scope[rawData] ?false:true;
+  }
   $scope.Init = function(){
       ionic.Platform.ready(function(){
         $scope.headerImage = 'img/jag.jpg';
