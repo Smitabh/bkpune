@@ -12,7 +12,7 @@
 	  	Welcome to BKPune
 	  </div>		
 	  <div class="item item-text-wrap">
-	    v<span class="version"></span>
+	    <span class="version"></span>
 	  </div>
 	</div>
 
@@ -55,10 +55,10 @@
 		<button class="button button-positive large_button" ng-click="CSearchByA()">By Area</button>
   </div>
 </div>
-<h4>Gitapathshala Search</h4>
+<h4>Pathshala Search</h4>
 <div class="row">
   <div class="col" center>
-	    <button class="button button-calm large_button"" ng-click="searchFR()">By Keywords</button>
+	    <button class="button button-calm large_button" ng-click="searchFR()">By Keywords</button>
   </div>
   <div class="col" center>
 		<button class="button button-calm large_button" ng-click="searchFR()">By Area</button>
@@ -66,7 +66,11 @@
 </div>
 <div class="row">
   <div class="col" center>
-	    <button class="button button-balanced large_button"" ng-click="OpenNews()">News &amp; Events</button>
+	    <button class="button button-balanced large_button" ng-click="OpenNews()">News</button>
+		</div>
+		<div class="col" center>
+		 <button class="button button-balanced large_button" ng-click="OpenEvents()">Events</button>
+		</div>
   </div>
 </div>
 <button disabled ng-if="permit" ng-click="EnableLocation()" class="button button-{{permit?'balanced':'assertive'}}"><i class="icon ion-location"></i> Location Enabled</button>
