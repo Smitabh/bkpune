@@ -197,7 +197,7 @@ angular.module('bkpuneapp.services', [])
                 console.log(data);
           //Ajax Starts
             $.ajax({
-                url: "http://bkpuneapp.iocare.in/test1",
+                url: "http://bkpuneapp.iocare.in/epi/1/contact",
                 type: 'POST',
                 data: data,
                 beforeSend: function(xhr) { 
