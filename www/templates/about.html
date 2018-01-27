@@ -1,5 +1,9 @@
-<ion-view view-title="About" hide-nav-bar="false" ng-init="Init()">
+<style>
+    h2.lbl{ color: #ff3607;font-size: 16px;font-weight: 500;}
+	.item.item-divider{color: #ff3607;}
+</style>
 
+<ion-view view-title="About" ng-init="Init()">
   <ion-content padding="false" delegate-handle="example-scroller" elastic-header="example-elastic-header" overflow-scroll="false">
     <div id="example-elastic-header" class="incenter" bg-image="{{headerImage}}">
       <br><br>
@@ -10,7 +14,6 @@
       </div>
       
     </div>
-
 	<div class="card">
 	  <div class="item item-divider">
 	    General Information
@@ -19,6 +22,20 @@
 			Brahma Kumaris is a worldwide spiritual movement dedicated to personal transformation and world renewal. Founded in India in 1937, Brahma  Kumaris has <b style="color:#008cba">spread to over 136 countries</b> on all continents and has had an extensive impact in many sectors as an international NGO. However,their real commitment is to helping individuals transform their perspective of the world from material to spiritual. It supports the cultivation of a deep collective consciousness of peace and of the individual dignity of each soul.
 	  </div>
 	</div>
+	<div class="list card">
+	   <div class="item item-avatar">
+	    <img src="img/jb.png">
+	    <h2 class="lbl"> About Brahmakumari's Pune</h2>
+	  </div>
+	  <div class="item item-body animate-show-hide">
+	    <img class="full-image" src="img/jb.png">
+	    <p style="text-align:justify; ">
+	    	Pune as a rich cultural and educational hub of Maharashtra is indeed gifted with the spiritual teachings of Brahma Kumaris since 45 years. The present international head of the institution Rajyogini Dadi Jankiji has herself established the institution at Pune and stayed here for over 16 years.
+			Today Pune is proud to have over <b style="color:#008cba">60 Rajyoga Centers</b> located at different corners of Pune with over <b style="color:#008cba">10,500 regular students</b>.
+	    </p>
+	  </div>
+	</div>
+
 	<div class="card">
 	  <div class="item item-divider">
 	    International coordination
@@ -32,7 +49,7 @@
 	<div class="list card">
 	  <div class="item item-avatar">
 	    <img src="img/d1.jpg">
-	    <h2>The role of women as spiritual leaders</h2>
+	    <h2 class="lbl">The role of women as spiritual leaders</h2>
 	  </div>
 	  <div class="item item-body animate-show-hide">
 	    <img class="full-image" src="img/d1.jpg">
@@ -46,7 +63,7 @@
 	<div class="list card">
 	  <div class="item item-avatar">
 	    <img src="img/story.jpg">
-	    <h2>The Brahma Kumaris Story</h2>
+	    <h2 class="lbl">The Brahma Kumaris Story</h2>
 	  </div>
 	  <div class="item item-body animate-show-hide">
 	    <img class="full-image" src="img/story.jpg">
@@ -59,3 +76,7 @@
 </ion-content>
 </ion-view> 
    
+
+
+
+
