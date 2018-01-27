@@ -25,7 +25,7 @@ angular.module('bkpuneapp.directives', [])
                     'background-size' : 'cover',
                     'background-position': 'center',
                     'margin': 'auto',
-                    'height': '50vw'
+                    'height': '60vw'
                 });
               }
             });

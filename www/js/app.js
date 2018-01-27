@@ -16,7 +16,7 @@ angular.module('bkpuneapp', ['ionic', 'bkpuneapp.controllers','bkpuneapp.service
     try
     {
       if (cordova.platformId == 'android') {
-          StatusBar.backgroundColorByHexString("#f97b88");
+          StatusBar.backgroundColorByHexString("#ffe065");
       }
 
       var onLocationSuccess = function(position) {
@@ -150,6 +150,26 @@ angular.module('bkpuneapp', ['ionic', 'bkpuneapp.controllers','bkpuneapp.service
         'menuContent': {
           templateUrl: 'templates/about.html',
         controller: 'AboutCtrl'
+        }
+      }
+    })
+  .state('app.contact', {
+      url: '/contact',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/contact.html',
+        controller: 'ContactCtrl'
+        }
+      }
+    })
+  .state('app.news', {
+      url: '/news',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/news.html',
+        controller: 'NewsCtrl'
         }
       }
     })

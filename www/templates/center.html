@@ -21,17 +21,17 @@
 
   <div class="item item-body">
     <!-- <img class="full-image" src="{{center.center_photos[0].path?center.center_photos[0].path:'img/icon152.png'}}"> -->
-    <p >
-      Address: {{center.center_address}}
-    </p>
+    <li class="item">
+     Address: {{center.center_address}}
+    </li>
     <p>
       Pin :{{center.pin}}
     </p>
     <p>
-      Contact Number: {{center.phone1}} {{center.phone2}}
+      Contact Number: <a href="tel:{{center.phone1}}">{{center.phone1}}</a> <a href="tel:{{center.phone2}}">{{center.phone2}}</a>
     </p>
     <p>
-      Email: {{center.email}}
+      Email: <a href="mailto:{{center.email}}">{{center.email}}</a>
     </p>
     <p>
       Area: {{center.area}}
@@ -39,10 +39,10 @@
     <p>
       Nearest Center: {{center.nearest_center}}
     </p>    
-    <p>
+<!--     <p>
       <a href="#" class="subdued">1 Like</a>
       <a href="#" class="subdued">5 Comments</a>
-    </p>
+    </p> -->
     <p>
       <span class="calm" ng-bind-html="status"></span>
     </p>    
@@ -75,9 +75,6 @@
 
     </ng-map>
     <p style="padding:10px;"><br><b>Total Distance to {{center.center_name}} Center is {{map.directionsRenderers[0].directions.routes[0].legs[0].distance.value / 1000}} km from your current location</b></p>
-
-    <br>
-      <textarea row="10" cols="20">{{map.directionsRenderers[0].directions}}{{position}}</textarea>
 
   </div>
 </ion-card>

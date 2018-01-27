@@ -34,12 +34,12 @@ angular.module('bkpuneapp.controllers', [])
   };
 })
 
-.controller('HomeCtrl', function($scope, $stateParams, $state,CenterSearchService) {
+.controller('HomeCtrl', function($scope, $stateParams, $state,CenterSearchService,$ionicPopup) {
   // Called to navigate to the home page
   $scope.frcount="";
   $scope.ctcount="";
   $scope.permit=false;
-
+  $scope.iconUrl='img/spinl.gif';
   //Enable Location
   $scope.EnableLocation = function() {
       try{
@@ -116,10 +116,15 @@ angular.module('bkpuneapp.controllers', [])
       });
 
   }
-  $scope.startApp = function() {
+  $scope.CSearchByK = function() {
     $state.go('app.searchk');
     console.log('Starting!');
   };
+  $scope.CSearchByA = function() {
+    $state.go('app.search');
+    console.log('frsearch!');
+  };
+
   $scope.searchFR = function() {
     $state.go('app.frsearch');
     console.log('frsearch!');
@@ -128,7 +133,7 @@ angular.module('bkpuneapp.controllers', [])
 })
 
 .controller('CenterCtrl', function($scope,$ionicLoading, $stateParams, $state,CenterSearchService,NgMap,$rootScope) {
-  // Called to navigate to Center Details
+    // Called to navigate to Center Details
     $scope.center={};
     $scope.headerImage='';
     $scope.position={lat:null,lon:null}; //Very trouble some
@@ -159,7 +164,7 @@ angular.module('bkpuneapp.controllers', [])
 
     $scope.Init = function() {
     $ionicLoading.show({
-      template: '<ion-spinner></ion-spinner><br>Getting Center Details..'
+      template: '<img src="img/spinl.gif" > <br>Getting Center Details..'
     });
     $scope.status='Getting location...<ion-spinner></ion-spinner>';
       try
@@ -238,9 +243,29 @@ angular.module('bkpuneapp.controllers', [])
 
 })
 
+.controller('ContactCtrl', function($scope, $stateParams, $state,CenterSearchService) {
+  // Called to navigate to the main app
+    $scope.center={};
+    $scope.Init = function() {
+      var id = $stateParams.id;
+      CenterSearchService.getCenterDetails("fr",id).success(function(data) {
+          console.log(data);
+          $scope.center=data;
+        }).error(function(data) {
+          var alertPopup = $ionicPopup.alert({
+          title: 'Fetch Failed',
+          template: 'Please check your your internet connection!'
+        });
+      });
+
+    };
+
+})
+
 .controller('AboutCtrl', function($scope) {
-
-
+      ionic.Platform.ready(function(){
+        $scope.headerImage = 'img/hq.jpg';
+      });
 })
 
 .controller('SearchCtrl', function($scope, $stateParams,CenterSearchService,$ionicPopup,$ionicLoading) {
@@ -264,7 +289,7 @@ angular.module('bkpuneapp.controllers', [])
 
   $scope.runinitk = function(){
     $ionicLoading.show({
-      template: '<ion-spinner></ion-spinner><br>Getting the list of Centers'
+      template: '<img src="img/spinl.gif" ><br>Getting the list of Centers'
     });
     CenterSearchService.getCenters("ct","","").success(function(data) {
         console.log(data);
@@ -460,23 +485,55 @@ if(window.localStorage['didTutorial'] === "true") {
   };
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
 
-.controller('ContactCtrl', function($scope,CenterContactService) {
-	
-	$scope.data = {personName:null,email:null,subject:null,msessage:null};
-		$scope.saveContact = function(data){
-				//alert('personName--'+data.personName);
-				CenterContactService.postContactCenter(data).success(function(data) {
-				console.log(data);
-			
-			  }).error(function(data) {
-				var alertPopup = $ionicPopup.alert({
-					title: 'Fetch Failed',
-					template: 'Please check your your internet connection!'
-			  });
-			});
-		}
+.controller('ContactCtrl', function($scope,CenterSearchService,$ionicPopup,$ionicLoading) {
+  
+  $scope.data = {name:null,email:null,subject:null,phone:null,msessage:null};
+    $scope.saveContact = function(data){
+        $ionicLoading.show({
+          template: '<img src="img/spinl.gif" ><br>Getting the list of Centers'
+        });
+        CenterSearchService.sendContact(data).success(function(data) {
+          console.log(data);
+          $ionicLoading.hide();
+        }).error(function(data) {
+          $ionicLoading.hide();
+        var alertPopup = $ionicPopup.alert({
+          title: 'Fetch Failed',
+          template: 'Please check your your internet connection!'
+        });
+      });
+    }
+
+})
+.controller('NewsCtrl', function($scope,CenterSearchService,$ionicPopup,$ionicLoading) {
+
+  $scope.Init = function(){
+      ionic.Platform.ready(function(){
+        $scope.headerImage = 'img/jag.jpg';
+      });
+      $scope.GetNews();
+  }
+  $scope.newsItems=[];
+  $scope.data = {name:null,email:null,subject:null,phone:null,msessage:null};
+    $scope.GetNews = function(){
+        $ionicLoading.show({
+          template: '<img src="img/spinl.gif" ><br>Getting the list of Centers'
+        });
+        CenterSearchService.fetchNews().success(function(data) {
+        console.log(data);
+          $scope.newsItems=data.data;
+          $ionicLoading.hide();
+        }).error(function(data) {
+          $ionicLoading.hide();
+        var alertPopup = $ionicPopup.alert({
+          title: 'Fetch Failed',
+          template: 'Please check your your internet connection!'
+        });
+      });
+    }
+
 })
 
+.controller('PlaylistCtrl', function($scope, $stateParams) {
+});

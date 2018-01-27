@@ -190,39 +190,72 @@ angular.module('bkpuneapp.services', [])
             };
             return promise;
 
-      }
-
-
-
-  };
-}),
-service('CenterContactService', function ($q, $http) {
-    return {
-      postContactCenter: function (data) {
+      },
+    sendContact: function (data) {
       var deferred = $q.defer(),
                 promise = deferred.promise;
-                console.log(data);
-        //Ajax Starts
-        $.ajax({
-            url: "https://bkpuneapp.iocare.in/api/1/contact",
-            type: 'POST',
-            data: data,
-            beforeSend: function(xhr) { 
-              //xhr.setRequestHeader("X-OCTOBER-REQUEST-HANDLER", "onCheckLogin");
-              xhr = {};
-              //xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-            }
-          })
-        .done(function(response) { 
-          console.log(response);
-          deferred.resolve(response);
-        })
-        .fail(function(response) {
-          console.log("in error ");
-          console.log(response);
-          deferred.reject(response);
-        });
-      //ajax Ends
+
+          //Ajax Starts
+            $.ajax({
+                url: "https://bkpuneapp.iocare.in/api/1/contact",
+                type: 'POST',
+                data: data,
+                beforeSend: function(xhr) { 
+                  xhr.setRequestHeader("X-OCTOBER-REQUEST-HANDLER", "onFormSubmit");
+                  //xhr = {};
+                  xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                  xhr.setRequestHeader("Content-Type", "multipart/form-data");
+
+                }
+              })
+            .done(function(response) { 
+              console.log(response);
+              deferred.resolve(response);
+            })
+            .fail(function(response) {
+              console.log("in error ");
+              console.log(response);
+              deferred.reject(response);
+            });
+          //ajax Ends
+ 
+            promise.success = function (fn) {
+                promise.then(fn);
+                return promise;
+            };
+            promise.error = function (fn) {
+                promise.then(null, fn);
+                return promise;
+            };
+            return promise;
+      },
+    fetchNews: function () {
+      var deferred = $q.defer(),
+                promise = deferred.promise;
+
+          //Ajax Starts
+            $.ajax({
+                url: "https://bkpuneapp.iocare.in/api/1/news",
+                type: 'GET',
+                data: '',
+                beforeSend: function(xhr) { 
+                  //xhr.setRequestHeader("X-OCTOBER-REQUEST-HANDLER", "onFormSubmit");
+                  xhr = {};
+                  //xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                  //xhr.setRequestHeader("Content-Type", "multipart/form-data");
+
+                }
+              })
+            .done(function(response) { 
+              console.log(response);
+              deferred.resolve(response);
+            })
+            .fail(function(response) {
+              console.log("in error ");
+              console.log(response);
+              deferred.reject(response);
+            });
+          //ajax Ends
  
             promise.success = function (fn) {
                 promise.then(fn);
@@ -234,8 +267,11 @@ service('CenterContactService', function ($q, $http) {
             };
             return promise;
 
-      }
-	}
-	
-});	 
+      }      
+
+
+
+
+  };
+});
 

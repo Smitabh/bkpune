@@ -1,0 +1,60 @@
+<ion-view view-title="Contact Us"  ng-init="Init()">
+  <ion-content padding="false" delegate-handle="example-scroller" elastic-header="example-elastic-header" overflow-scroll="false">
+    <div id="example-elastic-header" class="incenter" bg-image="{{center.center_photos[0].path?center.center_photos[0].path:'img/menu-bg.jpg'}}">
+      <br><br>
+      <div class="card trcard ">
+        <div class="item item-text-wrap ">
+          <h2 class="calm"><b>Send Message</b></h2>
+        </div>
+      </div>
+      
+    </div>
+
+<div class="card">
+  <div class="item item-text-wrap">
+    If you have any queries or need any details, please write to us. We will be pleased to reply to your mail.
+  </div>
+</div>
+	    <ion-list>
+
+			
+			<ion-item center>
+
+				  <label class="item item-input">
+				    <i class="icon ion-person"></i>
+					<input type="text" ng-model="data.personName" placeholder=" Enter name">
+				  </label>
+			
+				  <label class="item item-input lbl">
+				    <i class="icon ion-email"> </i>
+					<input type="email" ng-model="data.email" placeholder=" Enter email">
+				  </label>
+				  <label class="item item-input lbl">
+				    <i class="icon ion-iphone"> </i>
+					<input type="text" ng-model="data.phone" placeholder=" Enter Mobile">
+				  </label>
+				  <label class="item item-input lbl">
+					<input type="text" ng-model="data.subject" placeholder="Enter subject">
+				  </label>
+				  
+				  <label class="item item-input lbl">
+				     <textarea ng-model="data.msessage" rows="10" placeholder="Enter msessage"></textarea>
+					
+				  </label> 
+
+					<div class="row">
+					  <div class="col" center>
+						    <button class="button button-calm" ng-click="saveContact(data)"><i class="ion-paper-airplane"></i> Send Message</button>
+					  </div>
+					</div>
+				
+
+
+	        </ion-item>
+			
+
+	    </ion-list>
+    </ion-content>
+</ion-view>
+
+   

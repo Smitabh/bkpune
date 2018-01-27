@@ -1,16 +1,21 @@
 <ion-view view-title="Home" hide-nav-bar="false" ng-init="Init()">
-  <ion-content  padding="false" class="incenter" delegate-handle="example-scroller" elastic-header="example-elastic-header" overflow-scroll="false">
-    <div id="example-elastic-header" class="" bg-image="img/menu-bg.jpg"></div>
+  <ion-content padding="false" class="incenter" delegate-handle="example-scroller" elastic-header="example-elastic-header" overflow-scroll="false">
+    <div id="example-elastic-header" class="" ></div>
 
 <!-- fb-image="img/bg.jpg" -->
 <div class="row">
 
   <div class="col" center>
-	<div class="card1">
+
+	<div class="card">
+	  <div class="item item-divider">
+	  	Welcome to BKPune
+	  </div>		
 	  <div class="item item-text-wrap">
-	    Welcome to BKPune v<span class="version"></span>
+	    v<span class="version"></span>
 	  </div>
 	</div>
+
   </div>
 
 </div>
@@ -19,7 +24,8 @@
 
   <div class="col" center>
 	<div class="card">
-	  <div class="item item-divider bkpune-darkbg light">
+	  <div class="item item-divider">
+	  	
 	    Centers
 	  </div>		
 	  <div class="item item-text-wrap">
@@ -29,7 +35,8 @@
   </div>
   <div class="col" center>
 	<div class="card">
-	  <div class="item item-divider bkpune-darkbg light">
+	  <div class="item item-divider">
+	  	
 	    Franchise
 	  </div>		
 	  <div class="item item-text-wrap">
@@ -39,18 +46,25 @@
   </div>
 </div>
 
+<h4>Center Search</h4>
 <div class="row">
-
   <div class="col" center>
-
-
-	    <button class="button button-calm button-full " ng-click="startApp()"><i class="icon ion-search"></i> Center Search</button>
-
-		<button class="button button-positive button-full " ng-click="searchFR()"><i class="icon ion-search"></i> Franchise Search</button>
-
+	    <button class="button button-positive large_button" ng-click="CSearchByK()"></i>By Keywords</button>
   </div>
-
+  <div class="col" center>
+		<button class="button button-positive large_button" ng-click="CSearchByA()">By Area</button>
+  </div>
 </div>
+<h4>Gitapathshala Search</h4>
+<div class="row">
+  <div class="col" center>
+	    <button class="button button-calm large_button"" ng-click="startApp()">By Keywords</button>
+  </div>
+  <div class="col" center>
+		<button class="button button-calm large_button" ng-click="searchFR()">By Area</button>
+  </div>
+</div>
+
 <button disabled ng-if="permit" ng-click="EnableLocation()" class="button button-{{permit?'balanced':'assertive'}}"><i class="icon ion-location"></i> Location Enabled</button>
 <button ng-if="!permit" ng-click="EnableLocation()" class="button button-{{permit?'balanced':'assertive'}}"><i class="icon ion-location"></i> Allow Location</button>
   </ion-content>

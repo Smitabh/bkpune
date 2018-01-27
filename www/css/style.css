@@ -1,9 +1,31 @@
 /* Empty. Add your own CSS if you like */
 
+.scroll-content{
+    background: url("../img/bg3.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+
+}
+
 .back-button {
   color: #FFF !important;
 }
-
+.bg-bg {
+  background-color: #ffffff;
+}
+.large_button {
+  line-height: 7vh !important;
+  width: 100%;
+  /*background-color : #00796b !important;*/
+}
+.large_button1 {
+  line-height: 7vh !important;
+  border-color: #d24f6e;
+  border-radius:0px 0px 0px 0px;
+  width: 100%;
+  background-color : #00796b !important;
+}
 .slider {
   height: 100%;
 }
@@ -19,7 +41,6 @@
 
 #logo {
   margin: 30px 0px;
-  text-align: center;
 }
 
 #list {
@@ -42,8 +63,8 @@
 
 /* Side Menu Profile */
 .my-container {
-    background-image:  url("../img/menu-bg.jpg");
-    background-color: #26a69a;
+    /*background-image:  url("../img/menu-bg.jpg");*/
+    background-color: #FFF;/*background-color: #26a69a;*/
     background-repeat: repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -53,7 +74,8 @@
 }
 
 .bar.bar-profile {
-background-image:  url("../img/menu-bg.jpg");
+/*background-image:  url("../img/menu-bg.jpg");*/
+background-color: #ffe065;
     height: 170px;
 }
 
@@ -74,26 +96,29 @@ background-image:  url("../img/menu-bg.jpg");
   background-color: #009688;
 }
 .bar.bar-bkpune {
-  background-color: #f97b88 ;
+  background-color: #ffe065 ;
 }
 .bkpune-darkbg {
   background-color: #444 ;
 }
+.tab-bkpune-yellow {
+  background-color: #efc33f ;
+}
 .tab-bkpune {
-  background-color: #f97b88 !important;
+  background-color: #efc33f !important;
 }
 .tabs-icon-top,
 .tabs-icon-top .tab,
 .tabs-icon-top .tab .nav-view-home {
-    color: #f97b88;
+    color: #ffe065;
 }
 .item.transp {
-    background-color: transparent;
-    color: #fff;
+    background-color: #b2b2b2;
+    color: #FFF;
 }
 .transp .item-content {
     background-color: transparent !important;
-    color: #fff;
+    color: #FFF;
 }
 .app-logo{ max-width:100px; margin:auto; background-repeat:no-repeat;background-position:center;}
 .top-content { padding-top: 10vh;  text-align: center;   }
@@ -214,28 +239,18 @@ background-image:  url("../img/menu-bg.jpg");
   height: 200px; 
   /* width and height can be anything, as long as they're equal */
 }
-p.para{
-	margin: 10px 10px 10px 10px;
-}
-h3 {
-    color: #ec3e15;
-    text-align: center;
+
+.animate-show-hide.ng-hide {
+  opacity: 0;
 }
 
-ion-view.pane {
-    overflow-y: auto;
-	height:auto;
-    max-height: 600px
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove {
+  transition: all linear 0.2s;
 }
-body{
-	color: #737171;
-	 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-    font-weight: 300;
-}
-label.item.item-input.lbl {
-    margin-top: 15px;
-}
-.item-input .icon {
-    min-width: 14px;
-    font-size: x-large;
+
+.check-element {
+  border: 1px solid black;
+  opacity: 1;
+  padding: 10px;
 }
