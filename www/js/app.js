@@ -173,7 +173,16 @@ angular.module('bkpuneapp', ['ionic', 'bkpuneapp.controllers','bkpuneapp.service
         }
       }
     })
-
+ .state('app.events', {
+      url: '/events',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/events.html',
+        controller: 'NewsCtrl'
+        }
+      }
+    })
   /*
     .state('app.playlists', {
       url: '/playlists',
