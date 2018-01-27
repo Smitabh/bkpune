@@ -1,3 +1,6 @@
+<style>
+label.item.item-input.lbl{margin-bottom:15px;}
+</style>
 <ion-view view-title="Contact Us"  ng-init="Init()">
   <ion-content padding="false" delegate-handle="example-scroller" elastic-header="example-elastic-header" overflow-scroll="false">
     <div id="example-elastic-header" class="incenter" bg-image="{{center.center_photos[0].path?center.center_photos[0].path:'img/menu-bg.jpg'}}">
@@ -16,43 +19,55 @@
   </div>
 </div>
 	    <ion-list>
-
-			
 			<ion-item center>
-
-				  <label class="item item-input">
-				    <i class="icon ion-person"></i>
-					<input type="text" ng-model="data.name" placeholder=" Enter name">
+				<form name="contactForm" role="form">
+				  <label class="item item-input lbl">
+				    <input type="text" ng-model="data.name" placeholder=" Enter name" tabindex="1" required>
 				  </label>
 			
 				  <label class="item item-input lbl">
-				    <i class="icon ion-email"> </i>
-					<input type="email" ng-model="data.email" placeholder=" Enter email">
+				     <input type="email" ng-model="data.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"  placeholder=" Enter email" tabindex="2" required>
 				  </label>
 				  <label class="item item-input lbl">
-				    <i class="icon ion-iphone"> </i>
-					<input type="text" ng-model="data.phone" placeholder=" Enter Mobile">
+				    <input type="text" ng-model="data.phone" placeholder=" Enter mobile" tabindex="3" required>
 				  </label>
 				  <label class="item item-input lbl">
-					<input type="text" ng-model="data.subject" placeholder="Enter subject">
+					<input type="text" ng-model="data.subject" placeholder="Enter subject" tabindex="4" required>
 				  </label>
 				  
 				  <label class="item item-input lbl">
-				     <textarea ng-model="data.msessage" rows="10" placeholder="Enter msessage"></textarea>
+				     <textarea ng-model="data.msessage" rows="4" placeholder="Enter msessage"tabindex="5" required></textarea>
 					
 				  </label> 
 
 					<div class="row">
 					  <div class="col" center>
-						    <button class="button button-calm" ng-click="saveContact(data)"><i class="ion-paper-airplane"></i> Send Message</button>
+						    <button class="button button-calm" ng-disabled="contactForm.$invalid" ng-click="saveContact(data)"><i class="ion-paper-airplane"></i> Send Message</button>
 					  </div>
 					</div>
-				
-
-
+				</form>
 	        </ion-item>
-			
-
+			<ion-item>
+				<table border="0" style="margin-left:10px">
+					<tr>
+						<td style="color:#000FFF;"><b>Address :</b></td>
+						<td width="319">Prajapita BrahmaKumaris Ishwariya <br>Vishwa Vidyalaya,<br>
+						   Pandav Bhavan, Mount Abu,<br> Rajasthan, India <br><br>
+						</td>
+					</tr>
+					<tr>
+						<td style="color:#000FFF"><b>Contact :</b></td>
+						<td valign="bottom">
+							<span class="icon ion-iphone" style="font-size:20px"></span><a href="" tel:9414151111> 9414151111</a> 
+							<span class="icon ion-ios-telephone" style="font-size:20px"></span> <a href="" tel:9999344666> 9999344666</a> <br><br>
+						</td>
+					</tr>
+					<tr> 
+						<td style="color:#000FFF"><b>Website :</b></td>
+						<td  style="color: blue;"><a href="http://jagdambabhawan.org/"></a>www.jagdambabhawan.org</td>
+					</tr>
+				</table>
+			 </ion-item>
 	    </ion-list>
     </ion-content>
 </ion-view>
