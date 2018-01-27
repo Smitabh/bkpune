@@ -134,7 +134,10 @@ angular.module('bkpuneapp.controllers', [])
     $state.go('app.news');
     console.log('news!');
   };
-
+ $scope.OpenEvents = function() {
+    $state.go('app.events');
+    console.log('events!');
+  };
 
 })
 
@@ -517,6 +520,10 @@ if(window.localStorage['didIntro'] === "true") {
         });
       });
     }
+
+})
+.controller('EventsCtrl', function($scope, $stateParams) {
+
 
 })
 .controller('NewsCtrl', function($scope,CenterSearchService,$ionicPopup,$ionicLoading) {
