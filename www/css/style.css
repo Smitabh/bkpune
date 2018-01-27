@@ -113,7 +113,7 @@ background-color: #ffe065;
     color: #ffe065;
 }
 .item.transp {
-    background-color: #b2b2b2;
+    background-color: #757575 ;
     color: #FFF;
 }
 .transp .item-content {
@@ -238,19 +238,4 @@ background-color: #ffe065;
   width: 200px;
   height: 200px; 
   /* width and height can be anything, as long as they're equal */
-}
-
-.animate-show-hide.ng-hide {
-  opacity: 0;
-}
-
-.animate-show-hide.ng-hide-add,
-.animate-show-hide.ng-hide-remove {
-  transition: all linear 0.2s;
-}
-
-.check-element {
-  border: 1px solid black;
-  opacity: 1;
-  padding: 10px;
 }

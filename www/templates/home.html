@@ -7,7 +7,7 @@
 
   <div class="col" center>
 
-	<div class="card">
+	<div class="card animated fadeInDown">
 	  <div class="item item-divider">
 	  	Welcome to BKPune
 	  </div>		
@@ -23,7 +23,7 @@
 <div class="row">
 
   <div class="col" center>
-	<div class="card">
+	<div class="card animated fadeInLeft">
 	  <div class="item item-divider">
 	  	
 	    Centers
@@ -34,7 +34,7 @@
 	</div>
   </div>
   <div class="col" center>
-	<div class="card">
+	<div class="card animated fadeInRight" >
 	  <div class="item item-divider">
 	  	
 	    Franchise
@@ -64,7 +64,11 @@
 		<button class="button button-calm large_button" ng-click="searchFR()">By Area</button>
   </div>
 </div>
-
+<div class="row">
+  <div class="col" center>
+	    <button class="button button-balanced large_button"" ng-click="OpenNews()">News &amp; Events</button>
+  </div>
+</div>
 <button disabled ng-if="permit" ng-click="EnableLocation()" class="button button-{{permit?'balanced':'assertive'}}"><i class="icon ion-location"></i> Location Enabled</button>
 <button ng-if="!permit" ng-click="EnableLocation()" class="button button-{{permit?'balanced':'assertive'}}"><i class="icon ion-location"></i> Allow Location</button>
   </ion-content>

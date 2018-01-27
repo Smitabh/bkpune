@@ -194,17 +194,18 @@ angular.module('bkpuneapp.services', [])
     sendContact: function (data) {
       var deferred = $q.defer(),
                 promise = deferred.promise;
-
+                console.log(data);
           //Ajax Starts
             $.ajax({
-                url: "https://bkpuneapp.iocare.in/api/1/contact",
+                url: "http://bkpuneapp.iocare.in/test1",
                 type: 'POST',
                 data: data,
                 beforeSend: function(xhr) { 
+                  xhr.setRequestHeader("Host", "bkpuneapp.iocare.in");
                   xhr.setRequestHeader("X-OCTOBER-REQUEST-HANDLER", "onFormSubmit");
                   //xhr = {};
                   xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-                  xhr.setRequestHeader("Content-Type", "multipart/form-data");
+                  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
                 }
               })

@@ -118,17 +118,23 @@ angular.module('bkpuneapp.controllers', [])
   }
   $scope.CSearchByK = function() {
     $state.go('app.searchk');
-    console.log('Starting!');
+    console.log('searchk!');
   };
   $scope.CSearchByA = function() {
     $state.go('app.search');
-    console.log('frsearch!');
+    console.log('search!');
   };
 
   $scope.searchFR = function() {
     $state.go('app.frsearch');
     console.log('frsearch!');
   };
+
+  $scope.OpenNews = function() {
+    $state.go('app.news');
+    console.log('news!');
+  };
+
 
 })
 
@@ -207,7 +213,7 @@ angular.module('bkpuneapp.controllers', [])
           try{
             $scope.headerImage = data.center_photos[0].path;
           }catch(e){
-            $scope.headerImage = 'img/menu-bg.jpg';
+            $scope.headerImage = 'img/hq.jpg';
           } 
                    
           console.log($scope.position);
@@ -395,12 +401,12 @@ angular.module('bkpuneapp.controllers', [])
     $state.go('app.home');
     console.log('Starting!');
     // Set a flag that we finished the tutorial
-    window.localStorage['didTutorial'] = true;
+    window.localStorage['didIntro'] = true;
   };
 
   //No this is silly
   // Check if the user already did the tutorial and skip it if so
-if(window.localStorage['didTutorial'] === "true") {
+if(window.localStorage['didIntro'] === "true") {
     console.log('Skip intro');
     $scope.startApp();
   }
@@ -490,17 +496,24 @@ if(window.localStorage['didTutorial'] === "true") {
   
   $scope.data = {name:null,email:null,subject:null,phone:null,msessage:null};
     $scope.saveContact = function(data){
+      //console.log(data);
+
+      //console.log($scope.data);
         $ionicLoading.show({
-          template: '<img src="img/spinl.gif" ><br>Getting the list of Centers'
+          template: '<img src="img/chatri.gif" ><br>Sending your msessage'
         });
-        CenterSearchService.sendContact(data).success(function(data) {
+        CenterSearchService.sendContact($scope.data).success(function(data) {
           console.log(data);
           $ionicLoading.hide();
+          var alertPopup = $ionicPopup.alert({
+            title: 'Success',
+            template: 'Msessage has been sent.'
+          });
         }).error(function(data) {
           $ionicLoading.hide();
         var alertPopup = $ionicPopup.alert({
-          title: 'Fetch Failed',
-          template: 'Please check your your internet connection!'
+          title: 'Failed',
+          template: 'Msessage could not be sent!'
         });
       });
     }

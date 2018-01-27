@@ -195,7 +195,7 @@ angular.module('bkpuneapp', ['ionic', 'bkpuneapp.controllers','bkpuneapp.service
     }
   });*/
   // if none of the above states are matched, use this as the fallback
-  $ionicConfigProvider.tabs.position('bottom');
+  //$ionicConfigProvider.tabs.position('bottom');
   $urlRouterProvider.otherwise('/');
 });
 

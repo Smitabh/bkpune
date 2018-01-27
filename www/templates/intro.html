@@ -1,32 +1,37 @@
 
 <ion-view left-buttons="leftButtons" right-buttons="rightButtons">
-<ion-slide-box on-slide-changed="slideChanged(index)">
-  <ion-slide>
-    <h3>Are you looking for </h3>
-    <div id="logo">
-      <img src="img/icon152.png">
-    </div>
-    <p>
-      Peace, Happiness and Love?
-    </p>
+<ion-slide-box on-slide-changed="slideChanged(index)" >
+  <ion-slide style="background-color: #e65100;">
+    <h1>Are you looking for </h1>
+    <br>
+    <h2>
+      Peace, Happiness 
+    </h2>
+    <h2>
+      and Love?
+    </h2>
+    <br><br>
     <p>
       <a href="#!" class="button button-calm" ng-click="next()">NEXT</a>
     </p>
   </ion-slide>
-  <ion-slide>
+  <ion-slide style="background-color: #558b2f;"> 
     <h1>How Long </h1>
     <h2>will you run...?</h2><br>
     <h2>Just a minute!</h2>
     <h2>For few moments...!</h2>
-
+    <br>
     <a href="#!" class="button button-calm" ng-click="next()">NEXT</a>
   </ion-slide>
-  <ion-slide>
+  <ion-slide >
     <h1>Pause</h1>
     <h2> for a peace!</h2>
-    <p>
+    <div id="logo" width="100%">
+      <img src="img/chatri.gif">
+    </div>
+    <h4>
       Welcome to learn Rajyoga Meditation!
-    </p>
+    </h4>
     <button href="#!" class="button button-calm" ng-click="startApp()">Explore!</button>
   </ion-slide>
 </ion-slide-box>
